@@ -3,30 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#7b7d43" />
+  <meta name="theme-color" content="#43273f" />
   <meta name="description" content="Search your name to find your table and see who is seated with you." />
   <title>Find Your Table</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="page-shell">
     <section class="hero" aria-labelledby="page-title">
-      <div class="hero-card">
-        <div class="monogram" aria-hidden="true">H<span>&</span>R</div>
-        <p class="eyebrow">Welcome to the Engagement Party of</p>
-        <h1 id="page-title">Find Your Seat</h1>
-        <p class="couple-script">Herchel &amp; Rani</p>
-        <p class="event-date">September 12, 2026</p>
-        <div class="divider" aria-hidden="true"><span></span><i></i><span></span></div>
-        <p class="subtitle">Search your name below to see your table and who you’ll be seated with, or open the seating map to locate your table in the ballroom.</p>
+      <div class="monogram" aria-hidden="true">H<span>•</span>R</div>
+      <p class="eyebrow">Seating Chart</p>
+      <h1 id="page-title">Find Your Table</h1>
+      <p class="subtitle">Search your name below to see your table and who you’ll be seated with, or open the seating map to locate your table in the ballroom.</p>
 
-        <div class="tab-bar" role="tablist" aria-label="Seating chart views">
-          <button class="tab-button active" id="tabSearch" type="button" role="tab" aria-selected="true" aria-controls="panelSearch" data-tab="search">Guest Search</button>
-          <button class="tab-button" id="tabMap" type="button" role="tab" aria-selected="false" aria-controls="panelMap" data-tab="map">Seating Map</button>
-        </div>
+      <div class="tab-bar" role="tablist" aria-label="Seating chart views">
+        <button class="tab-button active" id="tabSearch" type="button" role="tab" aria-selected="true" aria-controls="panelSearch" data-tab="search">Guest Search</button>
+        <button class="tab-button" id="tabMap" type="button" role="tab" aria-selected="false" aria-controls="panelMap" data-tab="map">Seating Map</button>
       </div>
     </section>
 
