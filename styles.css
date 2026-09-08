@@ -24,7 +24,7 @@ body {
 }
 
 .page-shell {
-  width: min(1000px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 32px));
   margin: 0 auto;
   padding: 56px 0 36px;
 }
@@ -373,30 +373,19 @@ input::placeholder { color: #9da397; }
 .match-button strong { color: var(--accent-dark); }
 
 .map-panel {
-  width: 100%;
+  width: min(1180px, 100%);
   margin: 0 auto;
 }
 
 .map-card {
   width: 100%;
   overflow: hidden;
-}
-
-.map-copy {
-  padding: 24px 24px 8px;
-  text-align: center;
-}
-
-.map-copy p:last-child {
-  margin: 10px auto 0;
-  max-width: 560px;
-  color: var(--muted);
-  line-height: 1.55;
+  border-radius: 10px;
 }
 
 .map-link {
   display: block;
-  padding: 16px;
+  padding: 8px;
 }
 
 .map-image {
@@ -404,7 +393,7 @@ input::placeholder { color: #9da397; }
   width: 100%;
   height: auto;
   margin: 0 auto;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid var(--line);
   background: #fff;
 }
@@ -430,7 +419,7 @@ footer {
 
 @media (max-width: 640px) {
   .page-shell {
-    width: min(100% - 20px, 1000px);
+    width: min(100% - 16px, 1240px);
     padding-top: 38px;
   }
 
@@ -454,11 +443,11 @@ footer {
 
   .result-top,
   .table-mates,
-  .map-copy,
-  .map-link,
   .multi-card,
   .empty-card {
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  .map-link { padding: 4px; }
 }
