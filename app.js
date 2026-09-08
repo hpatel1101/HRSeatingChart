@@ -3,6 +3,11 @@ const clearButton = document.getElementById("clearSearch");
 const suggestions = document.getElementById("suggestions");
 const searchHint = document.getElementById("searchHint");
 const result = document.getElementById("result");
+const tabButtons = [...document.querySelectorAll(".tab-button")];
+const tabPanels = {
+  search: document.getElementById("panelSearch"),
+  map: document.getElementById("panelMap"),
+};
 
 const normalize = (value) =>
   value
@@ -28,6 +33,24 @@ const searchIndex = SEATING_DATA.flatMap((tableGroup, tableIndex) =>
 
 let activeSuggestion = -1;
 let visibleSuggestions = [];
+
+function switchTab(tabName) {
+  tabButtons.forEach((button) => {
+    const active = button.dataset.tab === tabName;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", active ? "true" : "false");
+  });
+
+  Object.entries(tabPanels).forEach(([name, panel]) => {
+    const active = name === tabName;
+    panel.classList.toggle("active", active);
+    panel.hidden = !active;
+  });
+
+  if (tabName === "search") {
+    searchInput.focus({ preventScroll: true });
+  }
+}
 
 function scoreMatch(entry, query) {
   if (entry.normalizedName === query) return 0;
@@ -105,6 +128,7 @@ function escapeHtml(value) {
 }
 
 function renderGuest(entry) {
+  switchTab("search");
   const group = SEATING_DATA[entry.tableIndex];
   const mates = group.guests;
 
@@ -116,7 +140,10 @@ function renderGuest(entry) {
         <div class="table-pill">${escapeHtml(displayTable(entry.table))}</div>
       </div>
       <div class="table-mates">
-        <h3>Seated at your table</h3>
+        <div class="section-head">
+          <h3>Seated at your table</h3>
+          <button type="button" class="view-map-button" id="openMapFromResult">View seating map</button>
+        </div>
         <ul class="guest-list">
           ${mates
             .map(
@@ -129,9 +156,11 @@ function renderGuest(entry) {
     </article>
   `;
 
+  document.getElementById("openMapFromResult")?.addEventListener("click", () => switchTab("map"));
+
   searchInput.value = entry.name;
   clearButton.classList.add("visible");
-  setHint(`${displayTable(entry.table)} · ${mates.length} guests listed`);
+  setHint(`${displayTable(entry.table)} · ${mates.length} guest group${mates.length === 1 ? "" : "s"} listed`);
   closeSuggestions();
 
   result.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -141,7 +170,7 @@ function renderMultiple(matches) {
   result.innerHTML = `
     <div class="multi-card">
       <h2 class="multi-title">We found more than one match</h2>
-      <p class="multi-copy">Choose the table that matches the guest you’re looking for.</p>
+      <p class="multi-copy">Choose the entry that matches the guest group you’re looking for.</p>
       <div class="match-grid">
         ${matches
           .map(
@@ -267,4 +296,15 @@ clearButton.addEventListener("click", () => {
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest("#searchWrap")) closeSuggestions();
+});
+
+tabButtons.forEach((button) => {
+  button.addEventListener("click", () => switchTab(button.dataset.tab));
+});
+
+window.addEventListener("keydown", (event) => {
+  if (!(event.target instanceof HTMLElement)) return;
+  if (event.target.closest("input, textarea")) return;
+  if (event.key.toLowerCase() === "m") switchTab("map");
+  if (event.key.toLowerCase() === "s") switchTab("search");
 });
