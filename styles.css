@@ -38,32 +38,6 @@ body {
   text-align: center;
 }
 
-/* Subtle disco balls */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  top: -28px;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  border: 1px solid rgba(95, 107, 80, 0.20);
-  background:
-    linear-gradient(90deg, transparent 47%, rgba(255,255,255,.75) 48%, rgba(255,255,255,.75) 52%, transparent 53%),
-    linear-gradient(0deg, transparent 47%, rgba(255,255,255,.70) 48%, rgba(255,255,255,.70) 52%, transparent 53%),
-    repeating-conic-gradient(from 8deg, rgba(255,255,255,.62) 0 8deg, rgba(178,188,165,.50) 8deg 16deg),
-    radial-gradient(circle at 34% 28%, #ffffff 0 8%, #d8dfd0 28%, #aeb9a2 66%, #87937c 100%);
-  box-shadow:
-    0 10px 24px rgba(73, 83, 65, 0.14),
-    inset -8px -10px 16px rgba(84, 96, 76, 0.12),
-    inset 8px 8px 16px rgba(255,255,255,.72);
-  opacity: 0.92;
-  pointer-events: none;
-}
-
-.hero::before { left: -74px; }
-.hero::after { right: -74px; transform: scale(.82); }
-
 .monogram {
   width: 64px;
   height: 64px;
@@ -468,11 +442,6 @@ footer {
   border: 0;
 }
 
-@media (max-width: 860px) {
-  .hero::before { left: 4px; top: -38px; transform: scale(.72); }
-  .hero::after { right: 4px; top: -38px; transform: scale(.62); }
-}
-
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 20px, 1000px);
@@ -480,8 +449,6 @@ footer {
   }
 
   .hero { margin-bottom: 24px; }
-  .hero::before { left: -2px; top: -32px; transform: scale(.58); }
-  .hero::after { right: -2px; top: -32px; transform: scale(.48); }
   .subtitle { margin-bottom: 20px; }
 
   .tab-bar {
