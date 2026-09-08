@@ -459,3 +459,141 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+.tab-bar {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(50, 37, 47, 0.08);
+}
+
+.tab-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.tab-button:hover,
+.tab-button:focus-visible {
+  background: rgba(67, 39, 63, 0.06);
+  color: var(--accent);
+  outline: 0;
+}
+
+.tab-button.active {
+  background: var(--accent);
+  color: white;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.section-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+
+.section-head h3 {
+  margin: 0;
+}
+
+.view-map-button {
+  border: 1px solid rgba(184, 150, 95, 0.45);
+  background: rgba(184, 150, 95, 0.08);
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.view-map-button:hover,
+.view-map-button:focus-visible {
+  background: rgba(184, 150, 95, 0.16);
+  outline: 0;
+}
+
+.map-card {
+  overflow: hidden;
+  width: min(1100px, 100%);
+  margin: 8px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  animation: enter 320ms ease both;
+}
+
+.map-copy {
+  padding: 30px 30px 10px;
+  text-align: center;
+}
+
+.map-title {
+  margin: 0;
+  color: var(--accent);
+  font: 500 clamp(1.7rem, 5vw, 2.5rem)/1.15 Georgia, "Times New Roman", serif;
+}
+
+.map-description {
+  width: min(720px, 100%);
+  margin: 14px auto 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.map-link {
+  display: block;
+  padding: 18px;
+}
+
+.map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(67, 39, 63, 0.08);
+  background: white;
+}
+
+@media (max-width: 720px) {
+  .section-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .view-map-button {
+    width: 100%;
+  }
+
+  .tab-bar {
+    display: flex;
+  }
+
+  .tab-button {
+    flex: 1 1 0;
+  }
+}
