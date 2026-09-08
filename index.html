@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#43273f" />
+  <meta name="description" content="Search your name to find your table and see who is seated with you." />
+  <title>Find Your Table</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="monogram" aria-hidden="true">H<span>•</span>R</div>
+      <p class="eyebrow">Seating Chart</p>
+      <h1 id="page-title">Find Your Table</h1>
+      <p class="subtitle">Search your name below to see your table and who you’ll be seated with.</p>
+
+      <div class="search-wrap" id="searchWrap">
+        <label class="sr-only" for="guestSearch">Search your name</label>
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m21 21-4.7-4.7m2.2-5.3a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"></path>
+          </svg>
+          <input
+            id="guestSearch"
+            type="search"
+            autocomplete="off"
+            autocapitalize="words"
+            spellcheck="false"
+            placeholder="Type your first or last name"
+            aria-controls="suggestions"
+            aria-expanded="false"
+          />
+          <button id="clearSearch" class="clear-button" type="button" aria-label="Clear search">×</button>
+        </div>
+
+        <div id="suggestions" class="suggestions" role="listbox" aria-label="Guest suggestions"></div>
+        <p id="searchHint" class="search-hint">Start typing to search the guest list.</p>
+      </div>
+    </section>
+
+    <section id="result" class="result-section" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>We can’t wait to celebrate with you.</p>
+  </footer>
+
+  <script src="seating-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
