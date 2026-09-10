@@ -25,28 +25,10 @@
       box-shadow: 0 8px 20px rgba(63, 72, 55, 0.14);
     }
 
-    .table-list-number {
-      margin: 0 0 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
-      color: var(--accent-dark);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1;
-      font-variant-numeric: lining-nums tabular-nums;
-      font-feature-settings: "lnum" 1, "tnum" 1;
-      text-align: center;
-    }
-
     @media (max-width: 640px) {
       .table-pill {
         min-width: 130px;
         font-size: 1.3rem;
-      }
-
-      .table-list-number {
-        font-size: 1.2rem;
       }
     }
   </style>
@@ -95,21 +77,5 @@
 
   <script src="seating-data.js?v=20260910-final"></script>
   <script src="app.js"></script>
-  <script>
-    const resultPanel = document.getElementById("result");
-    const tableNumberObserver = new MutationObserver(() => {
-      const tablePill = resultPanel.querySelector(".table-pill");
-      const tableMates = resultPanel.querySelector(".table-mates");
-
-      if (tablePill && tableMates && !tableMates.querySelector(".table-list-number")) {
-        const tableNumber = document.createElement("div");
-        tableNumber.className = "table-list-number";
-        tableNumber.textContent = tablePill.textContent;
-        tableMates.prepend(tableNumber);
-      }
-    });
-
-    tableNumberObserver.observe(resultPanel, { childList: true, subtree: true });
-  </script>
 </body>
 </html>
