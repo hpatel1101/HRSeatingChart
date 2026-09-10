@@ -7,6 +7,43 @@
   <meta name="description" content="Search your name to find your table and see who is seated with you." />
   <title>Find Your Table</title>
   <link rel="stylesheet" href="styles.css?v=20260908-3" />
+  <style>
+    .table-pill {
+      min-width: 142px;
+      margin: 18px auto 0;
+      padding: 12px 24px;
+      background: var(--accent);
+      border: 1px solid var(--accent-dark);
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 20px rgba(63, 72, 55, 0.14);
+    }
+
+    .table-list-number {
+      margin: 0 0 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .table-pill {
+        min-width: 130px;
+        font-size: 1.3rem;
+      }
+
+      .table-list-number {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <main class="page-shell">
@@ -52,5 +89,21 @@
 
   <script src="seating-data.js?v=20260910-final"></script>
   <script src="app.js"></script>
+  <script>
+    const resultPanel = document.getElementById("result");
+    const tableNumberObserver = new MutationObserver(() => {
+      const tablePill = resultPanel.querySelector(".table-pill");
+      const tableMates = resultPanel.querySelector(".table-mates");
+
+      if (tablePill && tableMates && !tableMates.querySelector(".table-list-number")) {
+        const tableNumber = document.createElement("div");
+        tableNumber.className = "table-list-number";
+        tableNumber.textContent = tablePill.textContent;
+        tableMates.prepend(tableNumber);
+      }
+    });
+
+    tableNumberObserver.observe(resultPanel, { childList: true, subtree: true });
+  </script>
 </body>
 </html>
